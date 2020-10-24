@@ -4,6 +4,7 @@ import operator
 pattern_ip = '[1-9]{1,3}\\.[1-9]{1,3}\\.[1-9]{1,3}\\.([5-9][\\d]|100)'
 pattern_user = '(?<=]\s)(.*?)(?=\s\d)'
 pattern_func = '(?<=\s\/)(.*?)(?=\s)'
+pattern_host = '[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}'
 
 def func1(array):
     user_dict = dict()
@@ -34,9 +35,13 @@ def func1(array):
         b = max(a, key=a.get)
         print('Юзер {}, часто используемая функция: {}, кол-во вызовов {}'.format(key, b, a.get(b)))
 
-def func2():
+def func2(array):
+    arr_host = dict()
+    for line in array:
+        host = re.search(pattern_host, line)[0]
+        item_host =
 
-    return
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -53,8 +58,8 @@ if __name__ == "__main__":
                 array.append(line)
 
     # Условие задания №3
-    func1(array)
+    #func1(array)
 
     # Условие задания №4
-    func2()
+    func2(array)
 
