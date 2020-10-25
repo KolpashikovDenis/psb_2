@@ -33,16 +33,16 @@ def func1(array):
             t[f] = 1
             user_dict[u] = t
     keys = user_dict.keys()
-    fOut = open(sys.argv[2])
+    fOut = open(sys.argv[2], 'w')
     #print('1) Most used methods')
-    fOut.write('1) Most used methods')
+    fOut.write('1) Most used methods\n')
     for key in keys:
         a = dict()
         a = user_dict.get(key)
         b = max(a, key=a.get)
         #print('\t{} - /{}'.format(key, b))
-        fOut.write('\t{} - /{}'.format(key, b))
-        fOut.write()
+        fOut.write('\t{} - /{}\n'.format(key, b))
+    fOut.write('\n')
     fOut.close()
 
 def func2(array):
@@ -75,10 +75,9 @@ def func2(array):
     date1 = datetime.strptime(m1[0], '%a %b %d %H:%M:%S GMT+03:00 %Y')
     date2 = datetime.strptime(m2[0], '%a %b %d %H:%M:%S GMT+03:00 %Y')
     fOut = open(sys.argv[2], 'a')
-    fOut.write('2) Busiest host - {0}'.format(b))
-    fOut.write('\tFirst connection time - ({0})\n\tLast connection time - ({1})'
+    fOut.write('2) Busiest host - {0}\n'.format(b))
+    fOut.write('\tFirst connection time - [{0}]\n\tLast connection time - [{1}]\n\n'
           .format(date1.strftime('%d.%m.%Y %H:%M:%S'), date2.strftime('%d.%m.%Y %H:%M:%S')))
-    fOut.write()
     fOut.close()
     # print('Busiest host - {0}'.format(b))
     # print('\tFirst connection time - ({0})\n\tLast connection time - ({1})'
@@ -128,8 +127,9 @@ def func3(array):
     fOut.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print('Задайте входной текстовый файл')
+    if len(sys.argv) != 3:
+        print('Параметры запуска:')
+        print('\tpython {0} <inputFile> <outputFile>')
         sys.exit(-1)
     array = list()
 
@@ -148,4 +148,6 @@ if __name__ == "__main__":
 
     # Условие задания №5
     func3(array)
+
+    print('Done.')
 
